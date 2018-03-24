@@ -38,11 +38,89 @@
             <!-- Content -->
             <section id="content" class="main">
 
-                <h2>Magna feugiat lorem</h2>
-                <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis fames ac ante ipsum primis in faucibus.</p>
-                <p>Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Consequat leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit enim turpis lorem ipsum dolor sit amet feugiat. Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet est velit quis lorem.</p>
-                <h2>Tempus veroeros</h2>
-                <p>Cep risus aliquam gravida cep ut lacus amet. Adipiscing faucibus nunc placerat. Tempus adipiscing turpis non blandit accumsan eget lacinia nunc integer interdum amet aliquam ut orci non col ut ut praesent. Semper amet interdum mi. Phasellus enim laoreet ac ac commodo faucibus faucibus. Curae ante vestibulum ante. Blandit. Ante accumsan nisi eu placerat gravida placerat adipiscing in risus fusce vitae ac mi accumsan nunc in accumsan tempor blandit aliquet aliquet lobortis. Ultricies blandit lobortis praesent turpis. Adipiscing accumsan adipiscing adipiscing ac lacinia cep. Orci blandit a iaculis adipiscing ac. Vivamus ornare laoreet odio vis praesent nunc lorem mi. Erat. Tempus sem faucibus ac id. Vis in blandit. Nascetur ultricies blandit ac. Arcu aliquam. Accumsan mi eget adipiscing nulla. Non vestibulum ac interdum condimentum semper commodo massa arcu.</p>
+                <h2>Image element does not have alt attribute</h2>
+                <table style="font-size: 16px">
+					<tr>
+						<td><strong>Issue</strong></td>
+						<td>When screen readers encounter an image element, they read the alt text.</td>
+					</tr>
+					<tr>
+						<td><strong>Fix</strong></td>
+						<td>Include alt attribute</td>
+					</tr>
+				</table>
+				
+				<h2>Image has title attribute but not alt attribute</h2>
+                <table style="font-size: 16px">
+					<tr>
+						<td><strong>Issue</strong></td>
+						<td>Not all screen readers look for the title attribute. Title attribute is a catch-all while alt attribute is specifically for images, so it's good practice to use the alt attribute for images.</td>
+					</tr>
+					<tr>
+						<td><strong>Fix</strong></td>
+						<td>Change the title value to an alt value</td>
+					</tr>
+				</table>
+				
+				<h2>Image element has empty alt attribute</h2>
+                <table style="font-size: 16px">
+					<tr>
+						<td><strong>Issue</strong></td>
+						<td>Some screen readers will read images with empty alt attributes as decorative images and therefore skip over them. Content images should have descriptive alt attributes.</td>
+					</tr>
+					<tr>
+						<td><strong>Fix</strong></td>
+						<td>If the image is a content image, add descriptive alt text</td>
+					</tr>
+				</table>
+				
+				<h2>Anchor element does not have href attribute but has action-oriented label</h2>
+                <table style="font-size: 16px">
+					<tr>
+						<td><strong>Issue</strong></td>
+						<td>-1</td>
+					</tr>
+					<tr>
+						<td><strong>Fix</strong></td>
+						<td>-1</td>
+					</tr>
+				</table>
+				
+				<h2>Anchor element links to current page but not a separate section</h2>
+                <table style="font-size: 16px">
+					<tr>
+						<td><strong>Issue</strong></td>
+						<td>-1</td>
+					</tr>
+					<tr>
+						<td><strong>Fix</strong></td>
+						<td>-1</td>
+					</tr>
+				</table>
+				
+				<h2>Anchor element is of a button class</h2>
+                <table style="font-size: 16px">
+					<tr>
+						<td><strong>Issue</strong></td>
+						<td>-1</td>
+					</tr>
+					<tr>
+						<td><strong>Fix</strong></td>
+						<td>-1</td>
+					</tr>
+				</table>
+				
+				<h2>Text element has action-oriented label</h2>
+                <table style="font-size: 16px">
+					<tr>
+						<td><strong>Issue</strong></td>
+						<td>-1</td>
+					</tr>
+					<tr>
+						<td><strong>Fix</strong></td>
+						<td>-1</td>
+					</tr>
+				</table>
             </section>
 
         </div>
