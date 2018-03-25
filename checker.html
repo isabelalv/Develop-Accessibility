@@ -26,8 +26,8 @@
             //create array to hold new Content
             var newContent = [];
             //loop through and add line numbers
-            for (var i = 0; i < content.length; i++) { //begin for loop 
-                //append the line numbers and the new value to the newContent array 
+            for (var i = 0; i < content.length; i++) { //begin for loop
+                //append the line numbers and the new value to the newContent array
                 newContent.push((i + 1) + "\t" + content[i] + "\n");
             } //end for loop
             //update the content of textArea with line numbers
@@ -82,7 +82,11 @@
             <section id="content" class="main">
 
                 <div>
-                    <textarea name="code" id="code" rows="15" columns="1" style="float:left; width: 53%;" placeholder="Copy and paste your HTML code here"></textarea>
+                  <div style="float:left; width:53%">
+                    <button onclick="check()" style="float:right; margin:auto; display:block; margin-bottom: 10px;">Check</button>
+                    <p style="margin-top:5px">Paste your HTML in the box below, then press check!</p>
+                    <textarea name="code" id="code" rows="15" columns="1" style="float:center" placeholder="Copy and paste your HTML code here"></textarea>
+                  </div>
 
                     <table style="float:right; width:45%; font-size: 16px">
                         <thead>
@@ -124,10 +128,6 @@
 
                     </table>
 
-                </div>
-
-                <div style="text-align:center;">
-                    <button onclick="check()" style="position: absolute; float:center; top: 150%; margin:auto; display:block; margin-left: 33%;">Check</button>
                 </div>
 
                 <!-- Footer -->
