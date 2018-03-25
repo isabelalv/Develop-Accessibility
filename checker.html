@@ -89,17 +89,18 @@
                         // if not found, warning 1 no alt
                 }
                 
-                var actionWords = ["login", "signin", "me", "this", "here", "quit", "clickhere", "press", "try", "go", "home", "menu", "enter", "expand", "collapse", "edit"];
+                var actionWords = ["login", "signin", "me", "this", "here", "quit", "clickhere", "press", "try", "go", "home", "menu", "enter", "expand", "collapse", "edit", "signup"];
                 var actionFound = false;
                 for(var cnt = 0; cnt < actionWords.length; cnt++){
                     if( line.search(actionWords[cnt]) !== -1){
-                        actionFound = false;
+                        actionFound = true;
                     }
                 }
                 
+                
                 startIndex = line.search("<a");
                 if(startIndex !== -1){
-                    var endIndex = line.search(">");
+                    var endIndex = line.search("</a>");
                     var inside = line.substr(startIndex, endIndex - startIndex + 1);
                     var classButtonIndex = inside.search('class="button"');
                     if(classButtonIndex !== -1){
@@ -134,13 +135,13 @@
             }
 
             //stripping the strings of their last commas
-            noAlt = noAlt.substr(0, noAlt.length-1);
-            titleNoAlt = titleNoAlt.substr(0, titleNoAlt.length-1);
-            emptyAlt = emptyAlt.substr(0, emptyAlt.length-1);
-            noHref = noHref.substr(0, noHref.length-1);
-            noLinkSection = noLinkSection.substr(0, noLinkSection.length-1);
-            anchorButton = anchorButton.substr(0, anchorButton.length-1);
-            textAction = textAction.substr(0, textAction.length-1);
+            noAlt = noAlt.substr(0, noAlt.length-2);
+            titleNoAlt = titleNoAlt.substr(0, titleNoAlt.length-2);
+            emptyAlt = emptyAlt.substr(0, emptyAlt.length-2);
+            noHref = noHref.substr(0, noHref.length-2);
+            noLinkSection = noLinkSection.substr(0, noLinkSection.length-2);
+            anchorButton = anchorButton.substr(0, anchorButton.length-2);
+            textAction = textAction.substr(0, textAction.length-2);
 
             document.getElementById('td1').innerHTML = noAlt;
             document.getElementById('td2').innerHTML = titleNoAlt;
