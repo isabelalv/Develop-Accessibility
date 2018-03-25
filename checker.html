@@ -23,6 +23,10 @@
             //turn the text area content into an array
             var text = document.getElementById(textAreaID).value;
             var content = text.split("\n");
+            var firstLine = content[0];
+            if (firstLine[0] == 1) {
+                return false;
+            }
             //create array to hold new Content
             var newContent = [];
             //loop through and add line numbers
@@ -50,14 +54,15 @@
                 //check for error noAlt
                 var line = content[i];
                 var startIndex = line.search("<img ");
-                var endIndex = line.search(">");
-                var inside = line.substr(startIndex, endIndex - startIndex + 1);
-                var notfound = false;
-                if (inside.search("alt") === -1) {
-                    notfound = true;
-                    noAlt = noAlt + ", " + (i + 1);
+                if (startIndex !== -1) {
+                    var endIndex = line.search(">");
+                    var inside = line.substr(startIndex, endIndex - startIndex + 1);
+                    var notfound = false;
+                    if (inside.search(" alt") === -1) { //TODO: make more rigorous tests taking spaces into account
+                        notfound = true;
+                        noAlt = noAlt + (i + 1) + ", ";
+                    }
                 }
-
             }
 
 
@@ -99,14 +104,9 @@
             <!-- Content -->
             <section id="content" class="main">
 
-                <div>
-                  <div style="float:left; width:53%">
-                    <button onclick="check()" style="float:right; margin:auto; display:block; margin-bottom: 10px;">Check</button>
-                    <p style="margin-top:5px">Paste your HTML in the box below, then press check!</p>
-                    <textarea name="code" id="code" rows="15" columns="1" style="float:center" placeholder="Copy and paste your HTML code here"></textarea>
-                  </div>
+                <div style="height:100%">
 
-                    <table style="float:right; width:45%; font-size: 16px">
+                    <table style="float:right; width:45%; height: 100%; font-size: 16px">
                         <thead>
                             <tr>
                                 <th>Error/Warning (click for more info)</th>
@@ -145,6 +145,15 @@
                         </tbody>
 
                     </table>
+                    <div style="float:left; width:53%; height:100%">
+
+
+                        <button onclick="check()" style="float:right; margin:auto; display:block; margin-bottom: 10px;">Check</button>
+                        <p style="margin-top:5px">Paste your HTML in the box below, then press check!</p>
+                        <textarea name="code" id="code" rows="12" style="float:center; height:100%; resize:none;" placeholder="Copy and paste your HTML code here"></textarea>
+                    </div>
+
+
 
                 </div>
 
