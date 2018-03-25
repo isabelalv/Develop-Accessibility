@@ -52,23 +52,26 @@
 
             for (var i = 0; i < content.length; i++) {
                 //check for error img related errors
-                var line = content[i];
-                var startIndex = line.search("<img ");
+                var oldLine = content[i];
+                var line = oldLine.replace(/\s/g,'');
+                var startIndex = line.search("<img");
                 if (startIndex !== -1) {
                     var endIndex = line.search(">");
                     var inside = line.substr(startIndex, endIndex - startIndex + 1);
-//                    var altFound = false;
-//                    var emptyAltFound = false;
-//                    var titleFound = false;
-                    var altIndex = inside.search(" alt");
+                    var altIndex = inside.search("alt");
                     if(altIndex !== -1){
-                        var emptyAltIndex = line.search(" alt=\"\" ");
+                        var emptyAltIndex = inside.search('alt=""');
                         if(emptyAltIndex !== -1){
                             //warning 3 empty alt
                             emptyAlt = emptyAlt + (i+1) + ", ";
                         }
+                        var filledAltIndex = inside.search('alt="');
+                        if(filledAltIndex === -1){
+                            //warning 3 empty alt
+                            emptyAlt = emptyAlt + (i+1) + ", ";
+                        }
                     }else{
-                        var titleIndex = inside.search(" title");
+                        var titleIndex = inside.search("title");
                         if(titleIndex !== -1){
                             //warning 2 title without alt
                             titleNoAlt = titleNoAlt + (i+1) + ", ";
@@ -84,12 +87,12 @@
                     // if not found, check for title
                         // if found, warning 2 title but no alt
                         // if not found, warning 1 no alt
-//                    if (inside.search(" alt") === -1) { //TODO: make more rigorous tests taking spaces into account
-//                        notfound = true;
-//                        var titleFound = false;
-//                        if(inside.search("title") )
-//                        
-//                    }
+                }
+                
+                startIndex = line.search("<a");
+                if(startIndex !== -1){
+                    var endIndex = line.search('class="button"');
+                    var inside = line.substr(startIndex, endIndex - startIndex + 1);
                 }
             }
 
