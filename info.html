@@ -86,11 +86,16 @@
                 <table style="font-size: 16px">
                     <tr>
                         <td><strong>Issue</strong></td>
-                        <td>-1</td>
+                        <td>The keyboard cannot be used to focus on or click anchor elements without href attributes.</td>
                     </tr>
                     <tr>
                         <td><strong>Fix</strong></td>
-                        <td>-1</td>
+                        <td>One of the following:
+						<ul><li>Add href attribute</li>
+							<li>Change anchor element to button element</li>
+							<li>(Not recommended) Add focusability and clickability with focusable="true" or tabindex="0" and JavaScript (<a href="https://allyjs.io/tutorials/focusing-in-svg.html">more information</a>)</li>
+						</ul>
+						</td>
                     </tr>
                 </table>
 
@@ -100,11 +105,11 @@
                 <table style="font-size: 16px">
                     <tr>
                         <td><strong>Issue</strong></td>
-                        <td>-1</td>
+                        <td>Screen readers identify elements as links, buttons, or something else. Users expect links to bring up a different page or a different part of the current page. Users expect buttons to load a drop-down, a pop-up, or another action. Therefore, users may be confused when clicking a link that actually has the functionality of a button.</td>
                     </tr>
                     <tr>
                         <td><strong>Fix</strong></td>
-                        <td>-1</td>
+                        <td>Make sure your link causes a change in context instead of displaying a drop-down, a pop-up, etc.</td>
                     </tr>
                 </table>
 
@@ -114,11 +119,11 @@
                 <table style="font-size: 16px">
                     <tr>
                         <td><strong>Issue</strong></td>
-                        <td>-1</td>
+                        <td>Identified as a link or a button depending on the screen reader. Links and buttons have different keyboard focus and click properties.</td>
                     </tr>
                     <tr>
                         <td><strong>Fix</strong></td>
-                        <td>-1</td>
+                        <td>Change the anchor element to a button element</td>
                     </tr>
                 </table>
 
@@ -128,11 +133,11 @@
                 <table style="font-size: 16px">
                     <tr>
                         <td><strong>Issue</strong></td>
-                        <td>-1</td>
+                        <td>Clickable text should be a button or anchor/link element instead. This is confusing for screen reader users.</td>
                     </tr>
                     <tr>
                         <td><strong>Fix</strong></td>
-                        <td>-1</td>
+                        <td>If this serves the purpose of a button or link, make it a button or link!</td>
                     </tr>
                 </table>
             </section>
