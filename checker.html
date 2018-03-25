@@ -89,13 +89,58 @@
                         // if not found, warning 1 no alt
                 }
                 
+                var actionWords = ["login", "signin", "me", "this", "here", "quit", "clickhere", "press", "try", "go", "home", "menu", "enter", "expand", "collapse", "edit"];
+                var actionFound = false;
+                for(var cnt = 0; cnt < actionWords.length; cnt++){
+                    if( line.search(actionWords[cnt]) !== -1){
+                        actionFound = false;
+                    }
+                }
+                
                 startIndex = line.search("<a");
                 if(startIndex !== -1){
-                    var endIndex = line.search('class="button"');
+                    var endIndex = line.search(">");
                     var inside = line.substr(startIndex, endIndex - startIndex + 1);
+                    var classButtonIndex = inside.search('class="button"');
+                    if(classButtonIndex !== -1){
+                        //warning 6 anchor element of button class
+                        anchorButton = anchorButton + (i+1) + ", ";
+                    }
+                    var hrefIndex = inside.search("href");
+                    if( (actionFound === true)&&(hrefIndex === -1) ){
+                        //no href but action oriented
+                        //warning 4 nohref
+                        noHref = noHref + (i+1) + ", ";
+                    }
+                    var poundIndex = inside.search("#");
+                    if( poundIndex !== -1){
+                        //warning 5 link to current page
+                        noLinkSection = noLinkSection + (i+1) + ", ";
+                    }
+                }         
+                
+                if(actionFound === true){
+                    var textElement = false;
+                    var pTag = line.search("<p") !== -1;
+                    var hTag = line.search("<h") !== -1;
+                    var iTag = line.search("<i") !== -1;
+                    var bTag = line.search("<b") !== -1;
+                    if( (pTag)||(hTag)||(iTag)||(bTag) ){
+                        //warning 7 text with action oriented label
+                        textAction = textAction + (i+1) + ", ";
+                    }
                 }
+                
             }
 
+            //stripping the strings of their last commas
+            noAlt = noAlt.substr(0, noAlt.length-1);
+            titleNoAlt = titleNoAlt.substr(0, titleNoAlt.length-1);
+            emptyAlt = emptyAlt.substr(0, emptyAlt.length-1);
+            noHref = noHref.substr(0, noHref.length-1);
+            noLinkSection = noLinkSection.substr(0, noLinkSection.length-1);
+            anchorButton = anchorButton.substr(0, anchorButton.length-1);
+            textAction = textAction.substr(0, textAction.length-1);
 
             document.getElementById('td1').innerHTML = noAlt;
             document.getElementById('td2').innerHTML = titleNoAlt;
