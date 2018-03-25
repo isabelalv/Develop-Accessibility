@@ -48,8 +48,26 @@
 
             for (var i = 0; i < content.length; i++) {
                 //check for error noAlt
+                var line = content[i];
+                var startIndex = line.search("<img ");
+                var endIndex = line.search(">");
+                var inside = line.substr(startIndex, endIndex - startIndex + 1);
+                var notfound = false;
+                if (inside.search("alt") === -1) {
+                    notfound = true;
+                    noAlt = noAlt + ", " + (i + 1);
+                }
 
             }
+
+
+            document.getElementById('td1').innerHTML = noAlt;
+            document.getElementById('td2').innerHTML = titleNoAlt;
+            document.getElementById('td3').innerHTML = emptyAlt;
+            document.getElementById('td4').innerHTML = noHref;
+            document.getElementById('td5').innerHTML = noLinkSection;
+            document.getElementById('td6').innerHTML = anchorButton;
+            document.getElementById('td7').innerHTML = textAction;
         }
 
     </script>
@@ -94,31 +112,31 @@
                         <tbody>
                             <tr>
                                 <td><a href="info.html#noAlt">Image element does not have alt attribute</a></td>
-                                <td></td>
+                                <td id="td1"></td>
                             </tr>
                             <tr>
                                 <td><a href="info.html#titleNoAlt">Image element has title attribute but not alt attribute</a></td>
-                                <td></td>
+                                <td id="td2"></td>
                             </tr>
                             <tr>
                                 <td><a href="info.html#emptyAlt">Image element has empty alt attribute</a></td>
-                                <td></td>
+                                <td id="td3"></td>
                             </tr>
                             <tr>
                                 <td><a href="info.html#noHref">Anchor element does not have href attribute but has action-oriented label</a></td>
-                                <td></td>
+                                <td id="td4"></td>
                             </tr>
                             <tr>
                                 <td><a href="info.html#noLinkSection">Anchor element links to current page but not a separate section</a></td>
-                                <td></td>
+                                <td id="td5"></td>
                             </tr>
                             <tr>
                                 <td><a href="info.html#anchorButton">Anchor element is of a button class</a></td>
-                                <td></td>
+                                <td id="td6"></td>
                             </tr>
                             <tr>
                                 <td><a href="info.html#textAction">Text element has action-oriented label</a></td>
-                                <td></td>
+                                <td id="td7"></td>
                             </tr>
                         </tbody>
 
