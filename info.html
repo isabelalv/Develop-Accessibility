@@ -40,7 +40,7 @@
 
                 <p id="noAlt"></p>
                 <br>
-                <h2>Image element does not have alt attribute</h2>
+                <h2>Error: Image element does not have alt attribute</h2>
                 <table style="font-size: 16px">
                     <tr>
                         <td><strong>Issue</strong></td>
@@ -48,27 +48,29 @@
                     </tr>
                     <tr>
                         <td><strong>Fix</strong></td>
-                        <td>Include alt attribute</td>
+                        <td>Include alt attribute.</td>
                     </tr>
                 </table>
 
                 <p id="titleNoAlt"></p>
-                <span></span>
-                <h2>Image has title attribute but not alt attribute</h2>
+                <br>
+                <br>
+                <h2>Warning: Image has title attribute but not alt attribute</h2>
                 <table style="font-size: 16px">
                     <tr>
                         <td><strong>Issue</strong></td>
-                        <td>Not all screen readers look for the title attribute. Title attribute is a catch-all while alt attribute is specifically for images, so it's good practice to use the alt attribute for images.</td>
+                        <td>Some screen readers will look for title while others will not; alt is specific to image elements and will be identified by screen readers.</td>
                     </tr>
                     <tr>
                         <td><strong>Fix</strong></td>
-                        <td>Change the title value to an alt value</td>
+                        <td>Change the title value to an alt value.</td>
                     </tr>
                 </table>
 
                 <p id="emptyAlt"></p>
                 <br>
-                <h2>Image element has empty alt attribute</h2>
+                <br>
+                <h2>Warning: Image element has empty alt attribute</h2>
                 <table style="font-size: 16px">
                     <tr>
                         <td><strong>Issue</strong></td>
@@ -82,57 +84,66 @@
 
                 <p id="noHref"></p>
                 <br>
-                <h2>Anchor element does not have href attribute but has action-oriented label</h2>
+                <br>
+                <h2>Warning: Anchor element does not have href attribute but has action-oriented label</h2>
                 <table style="font-size: 16px">
                     <tr>
                         <td><strong>Issue</strong></td>
-                        <td>-1</td>
+                        <td>If anchor elements do not have href attribute but serve as buttons or links, they are not always focusable using the keyboard. This means that keyboard-only users cannot focus on or click them.</td>
                     </tr>
                     <tr>
                         <td><strong>Fix</strong></td>
-                        <td>-1</td>
+                        <td>One of the following:
+						<ul><li>Add href attribute</li>
+							<li>Change anchor element to button element</li>
+							<li>(Not recommended) Add focusability and clickability with focusable="true" or tabindex="0" and JavaScript (<a href="https://allyjs.io/tutorials/focusing-in-svg.html">more information</a>)</li>
+						</ul>
+						</td>
                     </tr>
                 </table>
 
                 <p id="noLinkSection"></p>
                 <br>
-                <h2>Anchor element links to current page but not a separate section</h2>
+                <br>
+                <h2>Warning: Anchor element links to current page</h2>
                 <table style="font-size: 16px">
                     <tr>
                         <td><strong>Issue</strong></td>
-                        <td>-1</td>
+                        <td>Screen readers identify elements as links, buttons, or something else. Users expect links to bring up a different page or a different part of the current page. Users expect buttons to load a drop-down, a pop-up, or another action. Therefore, users may be confused when clicking a link that actually has the functionality of a button.</td>
                     </tr>
                     <tr>
                         <td><strong>Fix</strong></td>
-                        <td>-1</td>
+                        <td>Check to make sure that your link causes a change in context (navigation to a different part of the page) and not just a drop-down, pop-up, etc.</td>
                     </tr>
                 </table>
 
                 <p id="anchorButton"></p>
                 <br>
-                <h2>Anchor element is of a button class</h2>
+                <br>
+                <h2>Error: Anchor element is of a button class</h2>
                 <table style="font-size: 16px">
                     <tr>
                         <td><strong>Issue</strong></td>
-                        <td>-1</td>
+                        <td>Identified as a link or a button depending on the screen reader. Links and buttons have different keyboard focus and click properties.</td>
                     </tr>
                     <tr>
                         <td><strong>Fix</strong></td>
-                        <td>-1</td>
+                        <td>Change the anchor element to a button element.</td>
                     </tr>
                 </table>
 
                 <p id="textAction"></p>
                 <br>
-                <h2>Text element has action-oriented label</h2>
+                <br>
+                <h2>Warning: Text element has action-oriented label</h2>
                 <table style="font-size: 16px">
                     <tr>
                         <td><strong>Issue</strong></td>
-                        <td>-1</td>
+                        <td>If this text is clickable, it should be a button or anchor/link element, not a text element. This is confusing for screen reader users.</td>
                     </tr>
                     <tr>
                         <td><strong>Fix</strong></td>
-                        <td>-1</td>
+                        <td>If this serves the purpose of a button or link, make it a button or link!</td>
                     </tr>
                 </table>
             </section>
