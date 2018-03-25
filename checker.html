@@ -51,17 +51,45 @@
             var textAction = "";
 
             for (var i = 0; i < content.length; i++) {
-                //check for error noAlt
+                //check for error img related errors
                 var line = content[i];
                 var startIndex = line.search("<img ");
                 if (startIndex !== -1) {
                     var endIndex = line.search(">");
                     var inside = line.substr(startIndex, endIndex - startIndex + 1);
-                    var notfound = false;
-                    if (inside.search(" alt") === -1) { //TODO: make more rigorous tests taking spaces into account
-                        notfound = true;
-                        noAlt = noAlt + (i + 1) + ", ";
+//                    var altFound = false;
+//                    var emptyAltFound = false;
+//                    var titleFound = false;
+                    var altIndex = inside.search(" alt");
+                    if(altIndex !== -1){
+                        var emptyAltIndex = line.search(" alt=\"\" ");
+                        if(emptyAltIndex !== -1){
+                            //warning 3 empty alt
+                            emptyAlt = emptyAlt + (i+1) + ", ";
+                        }
+                    }else{
+                        var titleIndex = inside.search(" title");
+                        if(titleIndex !== -1){
+                            //warning 2 title without alt
+                            titleNoAlt = titleNoAlt + (i+1) + ", ";
+                        }else{
+                            //warning 1 no alt
+                            noAlt = noAlt + (i + 1) + ", ";
+                        }
                     }
+                    // look for alt
+                        // if found, check for alt=""
+                            // if found, warning 3 empty alt
+                            // otherwise we're good, so do nothing
+                    // if not found, check for title
+                        // if found, warning 2 title but no alt
+                        // if not found, warning 1 no alt
+//                    if (inside.search(" alt") === -1) { //TODO: make more rigorous tests taking spaces into account
+//                        notfound = true;
+//                        var titleFound = false;
+//                        if(inside.search("title") )
+//                        
+//                    }
                 }
             }
 
