@@ -18,25 +18,43 @@
     <script type="text/javascript">
         function check() {
             lineNumbers();
+            checkErrors();
             return true;
         };
 
         function lineNumbers() {
             var textAreaID = "code";
             //turn the text area content into an array
-            var content = document.getElementById(textAreaID).innerHTML.split("\n");
+            var text = document.getElementById(textAreaID).value;
+            var content = text.split("\n");
             //create array to hold new Content
             var newContent = [];
             //loop through and add line numbers
             for (var i = 0; i < content.length; i++) { //begin for loop 
                 //append the line numbers and the new value to the newContent array 
-                newContent.push((i + 1) + "\n");
+                newContent.push((i + 1) + "\t" + content[i] + "\n");
             } //end for loop
             //update the content of textArea with line numbers
-            document.getElementById("lines").innerHTML = newContent.join("");
-            document.getElementById("lines").style.display = '';
+            document.getElementById("code").value = newContent.join("");
             return true;
         };
+
+        function checkErrors() {
+            var text = document.getElementById("code").value;
+            var content = text.split("\n");
+            var noAlt = "";
+            var titleNoAlt = "";
+            var emptyAlt = "";
+            var noHref = "";
+            var noLinkSection = "";
+            var anchorButton = "";
+            var textAction = "";
+
+            for (var i = 0; i < content.length; i++) {
+                //check for error noAlt
+
+            }
+        }
 
     </script>
 </head>
@@ -49,7 +67,7 @@
         <!-- Header -->
         <header id="header">
             <h1>HTML Checker</h1>
-            <p>Ipsum dolor sit amet nullam</p>
+
         </header>
 
         <!-- Nav -->
@@ -68,9 +86,7 @@
             <section id="content" class="main">
 
                 <div>
-                    <textarea id="lines" name="lines" rows="16" columns="2" style="width: 30px; float:left; display:none"></textarea>
-
-                    <textarea name="code" id="code" rows="16" columns="1" style="float:left; width: 50%;" placeholder="Copy and paste your HTML code here"></textarea>
+                    <textarea name="code" id="code" rows="16" columns="1" style="float:left; width: 53%;" placeholder="Copy and paste your HTML code here"></textarea>
 
                     <table style="float:right; width:45%; font-size: 16px">
                         <thead>
@@ -115,7 +131,7 @@
                 </div>
 
                 <div style="text-align:center;">
-                    <button onclick="check()" style="position: absolute; float:center; top: 170%; margin:auto; display:block; margin-left: 33%;">Check</button>
+                    <button onclick="check()" style="position: absolute; float:center; top: 160%; margin:auto; display:block; margin-left: 33%;">Check</button>
                 </div>
 
                 <!-- Footer -->
